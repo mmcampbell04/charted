@@ -1,0 +1,17 @@
+.container {
+  margin-block: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+}
