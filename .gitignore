@@ -1,0 +1,27 @@
+node_modules
+.env 
+.env.local   
+.DS_Store
+.cursorrules
+venv/
+.vscode/
+env/
+
+# Frontend build outputs
+frontend/dist/
+frontend/build/
+
+# Backend
+backend/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+
+# Logs
+*.log
+logs/
+
+# IDE (keeping only what's not in frontend/.gitignore)
+.idea/
+
+# Database
+*.db
