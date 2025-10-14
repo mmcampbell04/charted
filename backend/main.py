@@ -8,9 +8,12 @@ from app.core.database import Base, engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Create tables on startup
     Base.metadata.create_all(bind=engine)
     yield
-    Base.metadata.drop_all(bind=engine)
+    # Only drop tables in development
+    if settings.ENVIRONMENT == "development":
+        Base.metadata.drop_all(bind=engine)
 
 app = FastAPI(
     title="Charted API",
