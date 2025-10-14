@@ -7,11 +7,10 @@ export const Home = () => {
 
   return (
     <section className={styles.outerWrapper}>
-      {user?.data?.user ? (
+      {user ? (
         <div className={styles.innerWrapper}>
           <p>
-            Welcome back, {user?.data?.user.name}! Ready to continue your
-            knitting journey?
+            Welcome back, {user?.name}! Ready to continue your knitting journey?
           </p>
           <div>
             <ButtonLink to="/dashboard">Go to Dashboard</ButtonLink>
@@ -31,7 +30,7 @@ export const Home = () => {
             <div className={styles.ctaButtons}>
               <ButtonLink to="/register">Get Started</ButtonLink>
               <ButtonLink to="/login" variant="ghost">
-                Sign In
+                Log In
               </ButtonLink>
             </div>
           </div>
