@@ -20,10 +20,10 @@ export const LoginForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
-        <h1>Sign In</h1>
+        <h1>Log In</h1>
         <Form
           onSubmit={handleSubmit}
-          submitText="Sign In"
+          submitText="Log In"
           isLoading={isLoading}
           error={error?.message}
         >
@@ -46,11 +46,15 @@ export const LoginForm = () => {
           />
         </Form>
 
-        <div>
+        <div className={styles.signupContainer}>
           <p>
             Don't have an account? <Link to="/register">Sign up</Link>
           </p>
         </div>
+      </div>
+      <div className={styles.noteContainer}>
+        Note: this is a test login! For now, you can use test@test.com and
+        test123 for the password
       </div>
     </div>
   );
