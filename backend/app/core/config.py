@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     # CORS Settings
     ALLOWED_HOSTS: List[str] = config(
         "ALLOWED_HOSTS", 
-        default="http://localhost:3000,http://localhost:5173"
+        default="http://localhost:3000,http://localhost:5173,https://charted-app.vercel.app"
     ).split(",")
     
      # Database Settings
