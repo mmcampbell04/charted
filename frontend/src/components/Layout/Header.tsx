@@ -1,3 +1,4 @@
+import { SquareArrowOutUpRight } from "lucide-react";
 import { useCurrentUser } from "../../lib/hooks/useAuth";
 import { ButtonLink } from "../Button";
 import { Logo } from "./Logo";
@@ -12,6 +13,10 @@ export const Header = () => {
         <div className={styles.headerContent}>
           <Logo />
           <div className={styles.headerRight}>
+            <a href="https://www.ravelry.com/" target="_blank">
+              <SquareArrowOutUpRight />
+              Ravelry
+            </a>
             <div className={styles.authContainer}>
               {user ? (
                 <ButtonLink to="/logout">Logout</ButtonLink>
