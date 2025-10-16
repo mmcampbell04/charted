@@ -4,10 +4,22 @@ from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
 # Create database engine
-engine = create_engine(
-    settings.DATABASE_URL,
-    connect_args={"check_same_thread": False} if "sqlite" in settings.DATABASE_URL else {}
-)
+def get_engine():
+    if "sqlite" in settings.DATABASE_URL:
+        # SQLite configuration for development
+        return create_engine(
+            settings.DATABASE_URL,
+            connect_args={"check_same_thread": False}
+        )
+    else:
+        # PostgreSQL configuration for production
+        return create_engine(
+            settings.DATABASE_URL,
+            pool_pre_ping=True,
+            pool_recycle=300
+        )
+
+engine = get_engine()
 
 # Create Base class
 Base = declarative_base()
