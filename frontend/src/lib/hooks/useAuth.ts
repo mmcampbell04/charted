@@ -45,12 +45,13 @@ export const useLogin = () => {
 };
 
 export const useRegister = () => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
     mutationFn: authApi.register,
     onSuccess: (data) => {
-      successHandler(queryClient, navigate, data.access_token);
+      navigate("/login");
+      console.log("Register success:", data);
     },
     onError: (error) => {
       console.error("Register error:", error);
