@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     ALLOWED_HOSTS: List[str] = [
         "http://localhost:3000",  # React dev server
         "http://localhost:5173",  # Vite dev server
-        "https://charted-frontend.vercel.app",  # Production frontend
-        "https://*.vercel.app",  # Vercel preview deployments
+        "https://cheerful-upliftment-production.up.railway.app"
+        
     ]
     
     # Database Settings
