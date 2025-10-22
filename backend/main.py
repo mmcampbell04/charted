@@ -1,48 +1,31 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
-from app.core.config import settings
-from app.api.api import api_router
-from app.core.database import Base, engine
+import uvicorn
+from core.config import settings
+from db.database import create_tables
+from api.main import api_router
 
+create_tables()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Only create tables in production, not drop them
-    if settings.ENVIRONMENT == "production":
-        Base.metadata.create_all(bind=engine)
-    else:
-        Base.metadata.create_all(bind=engine)
-        # Only drop tables in development
-        pass
-    yield
 
 app = FastAPI(
-    title="Charted API",
+    title="Charted",
     description="Backend API for Charted application",
-    version="1.0.0",
     debug=settings.DEBUG,
-    lifespan=lifespan
+    version="0.1.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
-
-# CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_HOSTS,
+    allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+app.include_router(api_router, prefix=settings.API_PREFIX)
 
-# Include API router
-app.include_router(api_router, prefix="/api")
-
-@app.get("/")
-async def root():
-    return {"message": "Welcome to Charted API"}
-
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

@@ -12,9 +12,9 @@ export const authApi = {
 
   register: async (userData: UserCreate) => {
     const response = await apiClient.post("/auth/register", userData);
-    const tokenResponse = await createToken(userData);
+    // const tokenResponse = await createToken(userData);
     return {
-      ...tokenResponse.data,
+      // ...tokenResponse.data,
       ...response.data,
     };
   },

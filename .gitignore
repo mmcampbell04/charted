@@ -25,3 +25,7 @@ logs/
 
 # Database
 *.db
+
+
+*.pyc
+.mypy_cache

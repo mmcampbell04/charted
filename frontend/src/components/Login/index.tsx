@@ -56,6 +56,7 @@ export const LoginForm = () => {
   );
 };
 
+// TODO: needs better validation
 const useLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { mutate: login, isPending, error } = useLogin();
