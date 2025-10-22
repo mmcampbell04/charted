@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from core.config import settings
-
 from db.database import create_tables
 from api.main import api_router
 

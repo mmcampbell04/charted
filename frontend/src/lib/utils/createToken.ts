@@ -6,7 +6,7 @@ export const createToken = async (userData: LoginCredentials | UserCreate) => {
   params.append("username", userData.email); // FastAPI OAuth2 expects 'username'
   params.append("password", userData.password);
 
-  return await apiClient.post("/auth/token", params, {
+  return await apiClient.post("/auth/login/token", params, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },

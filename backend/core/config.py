@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: str = ""
     JWT_SECRET_KEY: str = ""
     JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v: str) -> List[str]:
