@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { data: user, isLoading } = useCurrentUser();
-  console.log("user", user);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }

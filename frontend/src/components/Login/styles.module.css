@@ -1,17 +1,11 @@
-.container {
-  margin-block: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.signupContainer {
+  text-align: center;
 }
 
-.formContainer {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h1 {
-    text-align: center;
-  }
+.noteContainer {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
 }
