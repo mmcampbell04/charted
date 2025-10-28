@@ -4,6 +4,7 @@ const navigation = [
   { name: "Library", href: "library" },
   { name: "Projects", href: "projects" },
   { name: "Tools", href: "tools" },
+  { name: "Connect Ravelry", href: "connect-ravelry" },
 ];
 
 export const TabsList = () => {

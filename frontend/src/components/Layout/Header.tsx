@@ -13,7 +13,12 @@ export const Header = () => {
         <div className={styles.headerContent}>
           <Logo />
           <div className={styles.headerRight}>
-            <a href="https://www.ravelry.com/" target="_blank">
+            {user && <div>Welcome, {user.name}</div>}
+            <a
+              href="https://www.ravelry.com/"
+              target="_blank"
+              className={styles.ravelryLink}
+            >
               <SquareArrowOutUpRight />
               Ravelry
             </a>

@@ -1,72 +1,51 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useLogin } from "../../lib/hooks/useAuth";
 import formStyles from "../../lib/styles/form.module.css";
 import { Form } from "../Form";
 import { Input } from "../Input";
 import { PasswordInput } from "../Input/PasswordInput";
-import styles from "./styles.module.css";
 
-export const LoginForm = () => {
+export const ConnectRavelry = () => {
   const {
     formData,
     handleChange,
     handleSubmit,
-    isLoading,
-    error,
     showPassword,
     setShowPassword,
-  } = useLoginForm();
-
+  } = useRaverlyConnection();
   return (
     <div className={formStyles.container}>
       <div className={formStyles.formContainer}>
-        <h1>Log In</h1>
-        <Form
-          onSubmit={handleSubmit}
-          submitText="Log In"
-          isLoading={isLoading}
-          error={error?.message}
-        >
+        <h1>Connect your Ravelry account</h1>
+        <p>
+          Connect your Ravelry account to your account to access your projects
+          and patterns.
+        </p>
+        <Form onSubmit={handleSubmit} submitText="Connect" isLoading={false}>
           <Input
-            label="Email"
-            type="email"
-            value={formData.email}
-            name="email"
-            required
+            label="Ravelry Username"
+            name="username"
+            value={formData.username}
             onChange={handleChange}
           />
-
           <PasswordInput
-            label="Password"
-            value={formData.password}
+            label="Ravelry Password"
             name="password"
+            value={formData.password}
             onChange={handleChange}
             showPassword={showPassword}
             handleClick={() => setShowPassword(!showPassword)}
           />
         </Form>
-
-        <div className={styles.signupContainer}>
-          <p>
-            Don't have an account? <Link to="/register">Sign up</Link>
-          </p>
-        </div>
-      </div>
-      <div className={styles.noteContainer}>
-        Note: this is a test login! For now, you can use test@test.com and
-        password for the password
       </div>
     </div>
   );
 };
 
-// TODO: needs better validation
-const useLoginForm = () => {
+const useRaverlyConnection = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { mutate: login, isPending, error } = useLogin();
+  // const { mutate: login, isPending, error } = useLogin();
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -79,15 +58,15 @@ const useLoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login({ email: formData.email, password: formData.password });
+    // login({ email: formData.email, password: formData.password });
   };
 
   return {
     formData,
     handleChange,
     handleSubmit,
-    isLoading: isPending,
-    error,
+    // isLoading: isPending,
+    // error,
     showPassword,
     setShowPassword,
   };
